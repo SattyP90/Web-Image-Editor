@@ -22,8 +22,27 @@ export default function Sidebar() {
         aria-hidden={!open}
       >
         <div className="sidebar-inner">
-          <h1>Toolbar</h1>
-          <h1>More tools to be added later on.</h1>
+          <h2 className="sr-only">Toolbar</h2>
+
+          <div className="sidebar-buttons">
+            <button className="sidebar-btn" aria-label="Select" onClick={() => {}}>
+              🔍
+            </button>
+
+            <button className="sidebar-btn" aria-label="Crop" onClick={() => {}}>
+              ✂️
+            </button>
+
+            <button className="sidebar-btn" aria-label="Brush" onClick={() => {}}>
+              🖌️
+            </button>
+
+
+            <button className="sidebar-btn" aria-label="Eraser" onClick={() => {}}>
+              🧱
+            </button>
+          </div>
+
         </div>
       </aside>
     </>

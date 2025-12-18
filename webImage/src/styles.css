@@ -1,5 +1,5 @@
 /* reset */
-:root{ --sidebar-width: 260px; }
+:root{ --sidebar-width: 165px; }
 *{box-sizing:border-box}
 html,body,#root{height:100%}
 body{margin:0;font-family:system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
@@ -28,7 +28,14 @@ body{margin:0;font-family:system-ui, -apple-system, 'Segoe UI', Roboto, 'Helveti
 }
 .sidebar.open{transform:translateX(0)}
 
-.sidebar-inner{width:100%;}
+.sidebar-inner{width:100%;display:flex;flex-direction:column;align-items:center}
+
+/* buttons inside the sidebar */
+.sidebar-buttons{display:flex;flex-direction:column;gap:12px;width:100%;align-items:center}
+.sidebar-btn{width:88%;background:transparent;color:inherit;border:1px solid rgba(255,255,255,0.08);padding:10px 12px;border-radius:8px;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;transition:background 150ms,transform 120ms}
+.sidebar-btn:hover{background:rgba(255,255,255,0.06);transform:translateY(-2px)}
+.sidebar-btn:active{transform:translateY(0)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
 /* toggle button */
 .toggle-btn{
