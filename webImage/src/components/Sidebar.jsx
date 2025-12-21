@@ -2,6 +2,16 @@ import React, { useState } from 'react'
 
 export default function Sidebar() {
   const [open, setOpen] = useState(false)
+  const [activeTool, setActiveTool] = useState(null)
+
+  const tools = [
+    { id: 'brush', label: 'Brush', icon: '✒️' },
+    { id: 'bucket', label: 'Bucket', icon: '🪣' },
+  ]
+
+  function handleSelect(toolId) {
+    setActiveTool(prev => (prev === toolId ? null : toolId))
+  }
 
   return (
     <>
@@ -25,22 +35,22 @@ export default function Sidebar() {
           <h2 className="sr-only">Toolbar</h2>
 
           <div className="sidebar-buttons">
-            <button className="sidebar-btn" aria-label="Select" onClick={() => {}}>
-              🔍
-            </button>
+            {tools.map(tool => {
+              const isActive = activeTool === tool.id
+              return (
+                <button
+                  key={tool.id}
+                  type="button"
+                  className={`sidebar-btn ${isActive ? 'active' : ''}`}
+                  aria-label={tool.label}
+                  aria-pressed={isActive}
+                  onClick={() => handleSelect(tool.id)}
+                >
+                  <span aria-hidden="true">{tool.icon}</span>
+                </button>
+              )
+            })}
 
-            <button className="sidebar-btn" aria-label="Crop" onClick={() => {}}>
-              ✂️
-            </button>
-
-            <button className="sidebar-btn" aria-label="Brush" onClick={() => {}}>
-              🖌️
-            </button>
-
-
-            <button className="sidebar-btn" aria-label="Eraser" onClick={() => {}}>
-              🧱
-            </button>
           </div>
 
         </div>
