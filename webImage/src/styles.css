@@ -11,7 +11,16 @@ body{margin:0;font-family:system-ui, -apple-system, 'Segoe UI', Roboto, 'Helveti
 
 /*zoom */
 .zoom-viewport{width:100%;height:100%;overflow:auto}
-.zoom-wrap{transform-origin:0 0;transform:scale(var(--content-zoom,1));width:100%;display:flex;align-items:center;justify-content:flex-start;flex-direction:column}
+.zoom-wrap{transform-origin:0 0;transform:scale(var(--content-zoom,1));width:min(1200px,100%);aspect-ratio:1/1;display:flex;align-items:center;justify-content:flex-start;flex-direction:column;position:relative;border:1px solid #e5e7eb;border-radius:6px;background:#fff}
+.draw-layer{width:100%;height:100%;display:block;cursor:inherit}
+.canvas-label{position:absolute;top:12px;left:12px;font-weight:600;color:#111827;pointer-events:none}
+
+/* panning UX */
+.zoom-viewport{cursor:grab}
+.zoom-viewport.pen-active{cursor:crosshair}
+.zoom-viewport.pen-active.panning{cursor:grabbing}
+.zoom-viewport.panning{cursor:grabbing}
+.zoom-wrap{user-select:none;-webkit-user-drag:none}
 
 /* sidebar hidden off the screen when its closed */
 .sidebar{

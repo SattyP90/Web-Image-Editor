@@ -1,17 +1,13 @@
 import React, { useState } from 'react'
 
-export default function Sidebar() {
+export default function Sidebar({ activeTool, onSelect }) {
   const [open, setOpen] = useState(false)
-  const [activeTool, setActiveTool] = useState(null)
 
   const tools = [
+    { id: 'pen', label: 'Pen', icon: '🖊️' },
     { id: 'brush', label: 'Brush', icon: '✒️' },
     { id: 'bucket', label: 'Bucket', icon: '🪣' },
   ]
-
-  function handleSelect(toolId) {
-    setActiveTool(prev => (prev === toolId ? null : toolId))
-  }
 
   return (
     <>
@@ -44,7 +40,7 @@ export default function Sidebar() {
                   className={`sidebar-btn ${isActive ? 'active' : ''}`}
                   aria-label={tool.label}
                   aria-pressed={isActive}
-                  onClick={() => handleSelect(tool.id)}
+                  onClick={() => onSelect(tool.id)}
                 >
                   <span aria-hidden="true">{tool.icon}</span>
                 </button>
